@@ -1,0 +1,15 @@
+db:
+    image: mysql:5.7
+    restart: always
+    env_file:
+        - wordpress.env
+
+wordpress:
+    image: wordpress:latest
+    links:
+        - db
+    ports:
+        - "8000:80"
+    restart: always
+    env_file:
+        - wordpress.env

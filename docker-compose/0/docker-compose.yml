@@ -1,0 +1,9 @@
+web:
+    image: nginx:alpine
+    ports: 
+        - "8080:80"
+
+db:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: root

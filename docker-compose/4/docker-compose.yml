@@ -1,0 +1,9 @@
+web:
+    build: ./web
+    ports: 
+        - "8080:80"
+
+db:
+    build: ./db
+    environment:
+        MYSQL_ROOT_PASSWORD: root
