@@ -1,0 +1,10 @@
+traffic-manager:
+  ports:
+  - 80:3000
+  external_links:
+    - wordpress/lbwordpress:lbwordpress
+  labels:
+    io.rancher.scheduler.global: 'true'
+  tty: true
+  image: rancher/load-balancer-service
+  stdin_open: true

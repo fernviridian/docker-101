@@ -1,0 +1,24 @@
+db:
+    image: mysql:5.7
+    restart: always
+    env_file:
+        - wordpress.env
+
+wordpress:
+    image: wordpress:latest
+    links:
+        - db
+    restart: always
+    env_file:
+        - wordpress.env
+
+lbwordpress:
+  ports:
+  - 3000:80
+  labels:
+    io.rancher.scheduler.global: 'true'
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - wordpress:wordpress
+  stdin_open: true

@@ -1,0 +1,20 @@
+db:
+    scale: 1
+
+wordpress:
+    scale: 4
+
+lbwordpress:
+  load_balancer_config:
+    lb_cookie_stickiness_policy:
+      cookie: X-WORDPRESS
+      nocache: false
+      domain: ''
+    haproxy_config: {}
+  health_check:
+    port: 42
+    interval: 2000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2  
